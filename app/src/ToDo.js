@@ -12,6 +12,7 @@ class ToDo extends Component {
   }
 
   onClick(){
+    console.log("hera")
       this.props.toggleCompleted(this.props.index)
   }
 

@@ -8,10 +8,22 @@ class Main extends Component {
   }
 
   render() {
-    var items = this.props.myItems
+    var items = this.props.items
     var arr = []
     for(var i = 0; i < items.length; i++){
-      arr.push(<ToDo name={items[i].name} completed={items[i].completed} index={i} toggleCompleted={this.props.toggleCompleted} removeItem={this.props.removeItem}/>)
+      if(this.props.filter == "active"){
+        if(!items[i].completed){
+          arr.push(<ToDo name={items[i].name} completed={items[i].completed} index={i} toggleCompleted={this.props.toggleCompleted}  removeItem={this.props.removeItem}/>)
+        }
+      }
+      else if (this.props.filter == "completed") {
+        if(items[i].completed){
+          arr.push(<ToDo name={items[i].name} completed={items[i].completed} index={i} toggleCompleted={this.props.toggleCompleted}  removeItem={this.props.removeItem}/>)
+        }
+      }
+      else{
+        arr.push(<ToDo name={items[i].name} completed={items[i].completed} index={i} toggleCompleted={this.props.toggleCompleted}  removeItem={this.props.removeItem}/>)
+      }
     }
     return (
       <section className="main">
